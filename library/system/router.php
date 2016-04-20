@@ -11,7 +11,7 @@ spl_autoload_register(function($className) {
 
     $rootPath = ROOT . '/';
     $valid = false;
-   
+
     // check root directory of library/classes
     $valid = file_exists($classFile = $rootPath . 'library/system/classes/' . $className . '.class.php');
     
@@ -21,7 +21,7 @@ spl_autoload_register(function($className) {
     }     
     // if no any, find application/controllers
     if(!$valid){
-        $valid = file_exists($classFile = $rootPath . 'application/controllers/' . $className . '.php');
+        $valid = file_exists($classFile = $rootPath . 'application/controllers/' . $className . 'Controller.php');
     } 
     // if no any, find application/models
     if(!$valid){
