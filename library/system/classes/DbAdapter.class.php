@@ -1,4 +1,5 @@
 <?php
+
 class DbAdapter {
 
     protected $_server, $_username, $_password, $_errorInfo;
@@ -45,6 +46,19 @@ class DbAdapter {
 
 
         return $this->connection;
+    }
+
+    public function query($queryStr) {
+        $result = false;
+        try {
+
+
+            $result = $this->connection->query($queryStr);
+        } catch (Exception $e) {
+            echo "ErrNo: 1002";
+            die;
+        }
+        return $result;
     }
 
     /**

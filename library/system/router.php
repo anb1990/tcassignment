@@ -1,5 +1,6 @@
-<?php 
-if(session_id() === ""){
+<?php
+
+if (session_id() === "") {
     session_start();
 }
 
@@ -14,24 +15,24 @@ spl_autoload_register(function($className) {
 
     // check root directory of library/classes
     $valid = file_exists($classFile = $rootPath . 'library/system/classes/' . $className . '.class.php');
-    
-    // if no any, find library/mvc
-    if(!$valid){
-        $valid = file_exists($classFile = $rootPath . 'library/system/mvc/' . $className . '.class.php');
-    }     
-    // if no any, find application/controllers
-    if(!$valid){
-        $valid = file_exists($classFile = $rootPath . 'application/controllers/' . $className . 'Controller.php');
-    } 
-    // if no any, find application/models
-    if(!$valid){
-        $valid = file_exists($classFile = $rootPath . 'application/models/' . $className . '.php');
-    }  
-  
 
-    if($valid){
-       require_once($classFile); 
-    } 
+    // if no any, find library/mvc
+    if (!$valid) {
+        $valid = file_exists($classFile = $rootPath . 'library/system/mvc/' . $className . '.class.php');
+    }
+    // if no any, find application/controllers
+    if (!$valid) {
+        $valid = file_exists($classFile = $rootPath . 'application/controllers/' . $className . '.php');
+    }
+    // if no any, find application/models
+    if (!$valid) {
+        $valid = file_exists($classFile = $rootPath . 'application/models/' . $className . '.php');
+    }
+
+
+    if ($valid) {
+        require_once($classFile);
+    }
 });
 
 
